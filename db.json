@@ -1,0 +1,25 @@
+{
+  "contacts": [
+    {
+      "id": "1",
+      "name": "John Doe",
+      "phone": "9876543210",
+      "city": "New York",
+      "state": "NY"
+    },
+    {
+      "id": "3a30",
+      "name": "jay",
+      "phone": "2345432123",
+      "city": "agra",
+      "state": "up"
+    },
+    {
+      "id": "d325",
+      "name": "jack",
+      "phone": "9809543234",
+      "city": "ajmer",
+      "state": "up"
+    }
+  ]
+}
