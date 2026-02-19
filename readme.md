@@ -19,7 +19,7 @@ A responsive, single-page web application that allows users to manage a list of 
 
 ## 📂 Project Structure
 
-\`\`\`text
+```text
 address-book/
 ├── index.html          # Main HTML structure and modal UI
 ├── css/
@@ -30,7 +30,7 @@ address-book/
 ├── package.json        # Node dependencies and scripts
 ├── db.json             # Mock database file
 └── README.md           # Project documentation
-\`\`\`
+```
 
 ## ⚙️ Prerequisites
 
