@@ -8,18 +8,81 @@
       "state": "NY"
     },
     {
-      "id": "3a30",
-      "name": "jay",
-      "phone": "2345432123",
-      "city": "agra",
-      "state": "up"
+      "id": "8a14",
+      "name": "Jay",
+      "phone": "7830365011",
+      "city": "hyderabad",
+      "state": "telangana"
     },
     {
-      "id": "d325",
-      "name": "jack",
-      "phone": "9809543234",
-      "city": "ajmer",
-      "state": "up"
+      "id": "1a1f",
+      "name": "Jay Vardhan Vashishtha",
+      "phone": "07830365011",
+      "city": "Agra",
+      "state": "Uttar Pradesh"
+    },
+    {
+      "id": "7f99",
+      "name": "Rose",
+      "phone": "07830365014",
+      "city": "Agra",
+      "state": "Uttar Pradesh"
+    },
+    {
+      "id": "5b9a",
+      "name": "Raghav",
+      "phone": "09234312020",
+      "city": "Patna",
+      "state": "Bihar"
+    },
+    {
+      "id": "fa78",
+      "name": "Ram",
+      "phone": "9989898989",
+      "city": "Clouds",
+      "state": "Sky"
+    },
+    {
+      "id": "ae42",
+      "name": "Hanuman",
+      "phone": "9090909090",
+      "city": "Ayodhya",
+      "state": "UP"
+    },
+    {
+      "id": "d7a5",
+      "name": "Ravan",
+      "phone": "9876567898",
+      "city": "Sigiriya Rock Fortress",
+      "state": "Sri-Lanka"
+    },
+    {
+      "id": "8c36",
+      "name": "Sabri",
+      "phone": "8787654567",
+      "city": "Temple",
+      "state": "Forest"
+    },
+    {
+      "id": "1d84",
+      "name": "Sita",
+      "phone": "7865343212",
+      "city": "Sitamarhi",
+      "state": "Bihar"
+    },
+    {
+      "id": "d315",
+      "name": "Jatayu",
+      "phone": "9876879870",
+      "city": "Chadayamangalam",
+      "state": "Kerala"
+    },
+    {
+      "id": "07ce",
+      "name": "Krishna",
+      "phone": "9809876567",
+      "city": "Mathura",
+      "state": "Uttar Pradesh"
     }
   ]
 }
