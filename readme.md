@@ -68,3 +68,14 @@ Because this project uses ES6 Modules (`<script type="module">`), you must open 
 * **Duplicate Validation:** Before a `POST` or `PUT` request is made, the application cross-references the input data against the current state to prevent duplicates (ignoring the ID of the contact currently being edited).
 * **State Management:** The application maintains a local array of contacts fetched from the server. Sorting and searching filter this local array before dynamically injecting the resulting HTML template string into the DOM.
 * **Separation of Concerns:** Network requests are isolated in `api.js`, keeping the main controller (`app.js`) clean and focused solely on DOM updates and user events.
+
+## 📸 Screenshots
+
+### Home Page
+![Home Page](screenshots/ss03.png)
+
+### Add Employee Modal
+![Add Employee](screenshots/ss02.png)
+
+### Edit Employee
+![Edit Employee](screenshots/ss03.png)
