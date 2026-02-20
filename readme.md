@@ -75,7 +75,7 @@ Because this project uses ES6 Modules (`<script type="module">`), you must open 
 ![Home Page](screenshots/ss03.png)
 
 ### Add Employee Modal
-![Add Employee](screenshots/ss02.png)
+![Add Employee](screenshots/ss01.png)
 
 ### Edit Employee
-![Edit Employee](screenshots/ss03.png)
+![Edit Employee](screenshots/ss04.png)
