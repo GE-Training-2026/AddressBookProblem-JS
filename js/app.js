@@ -2,14 +2,15 @@ import { AddressBookAPI } from './api.js';
 
 class AddressBookApp {
     constructor() {
-        this.contacts = []; // Local state
+        this.contacts = [];
         this.cacheDOM();
         this.bindEvents();
         this.init();
     }
 
     cacheDOM() {
-        this.contactList = document.getElementById('contactList');
+        // Changed to contactGrid
+        this.contactGrid = document.getElementById('contactGrid');
         this.searchInput = document.getElementById('searchInput');
         this.sortSelect = document.getElementById('sortSelect');
         this.addBtn = document.getElementById('addBtn');
@@ -26,8 +27,8 @@ class AddressBookApp {
         this.searchInput.addEventListener('input', () => this.render());
         this.sortSelect.addEventListener('change', () => this.render());
 
-        // Event delegation for Edit and Delete buttons
-        this.contactList.addEventListener('click', (e) => {
+        // Event delegation now attached to contactGrid
+        this.contactGrid.addEventListener('click', (e) => {
             if (e.target.classList.contains('edit-btn')) {
                 this.editContact(e.target.dataset.id);
             } else if (e.target.classList.contains('delete-btn')) {
@@ -36,7 +37,6 @@ class AddressBookApp {
         });
     }
 
-    // Initialize data
     init() {
         AddressBookAPI.getContacts()
             .then(data => {
@@ -46,10 +46,8 @@ class AddressBookApp {
             .catch(err => console.error("Failed to fetch data:", err));
     }
 
-    // Handle duplicate validation
     isDuplicate(name, phone, currentId = null) {
         return this.contacts.some(contact => {
-            // Check if name OR phone already exists, ignoring the current editing contact
             const isMatch = (contact.name.toLowerCase() === name.toLowerCase() || contact.phone === phone);
             return isMatch && String(contact.id) !== String(currentId);
         });
@@ -64,7 +62,6 @@ class AddressBookApp {
         const city = document.getElementById('city').value.trim();
         const state = document.getElementById('state').value.trim();
 
-        // 1. Duplicate Check
         if (this.isDuplicate(name, phone, id)) {
             alert('A contact with this Name or Phone Number already exists!');
             return;
@@ -72,16 +69,13 @@ class AddressBookApp {
 
         const contactData = { name, phone, city, state };
 
-        // 2. Add or Update using AJAX Promises
         if (id) {
             AddressBookAPI.updateContact(id, contactData).then(() => {
                 this.closeModal();
-                this.init(); // Refresh data
+                this.init();
             });
         } else {
             AddressBookAPI.addContact(contactData).then(() => {
-                // If user wants to add multiple, we could keep the modal open and just reset the form here.
-                // For now, we will close it and refresh.
                 this.closeModal();
                 this.init();
             });
@@ -108,36 +102,38 @@ class AddressBookApp {
         }
     }
 
-    // Process Sort & Search, then render HTML
+    // UPDATED RENDER METHOD: Now generates Cards instead of Table Rows
     render() {
         const searchTerm = this.searchInput.value.toLowerCase();
         const sortBy = this.sortSelect.value;
 
-        // Search Filter
         let filteredContacts = this.contacts.filter(c =>
             c.name.toLowerCase().includes(searchTerm) ||
             c.city.toLowerCase().includes(searchTerm)
         );
 
-        // Sort Data
         filteredContacts.sort((a, b) => {
             if (a[sortBy].toLowerCase() < b[sortBy].toLowerCase()) return -1;
             if (a[sortBy].toLowerCase() > b[sortBy].toLowerCase()) return 1;
             return 0;
         });
 
-        // Generate HTML with Template Literals
-        this.contactList.innerHTML = filteredContacts.map(contact => `
-            <tr>
-                <td>${contact.name}</td>
-                <td>${contact.phone}</td>
-                <td>${contact.city}</td>
-                <td>${contact.state}</td>
-                <td>
+        // Inject Card HTML
+        this.contactGrid.innerHTML = filteredContacts.map(contact => `
+            <div class="employee-card">
+                <div class="employee-header">
+                    <div class="employee-name">${contact.name}</div>
+                    <div class="employee-role">📞 ${contact.phone}</div>
+                </div>
+                <div class="employee-details">
+                    <span><strong>City:</strong> ${contact.city}</span>
+                    <span><strong>State:</strong> ${contact.state}</span>
+                </div>
+                <div class="employee-actions">
                     <button class="btn secondary edit-btn" data-id="${contact.id}">Edit</button>
                     <button class="btn danger delete-btn" data-id="${contact.id}">Delete</button>
-                </td>
-            </tr>
+                </div>
+            </div>
         `).join('');
     }
 
@@ -153,7 +149,6 @@ class AddressBookApp {
     }
 }
 
-// Initialize App
 document.addEventListener('DOMContentLoaded', () => {
     new AddressBookApp();
 });
